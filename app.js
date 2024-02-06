@@ -1,7 +1,7 @@
 const Koa = require("koa");
 const { koaBody } = require("koa-body");
 const { CONFIG, session, verifySession } = require("./utils/session");
-const { connectDB, connectRedic, redis } = require("./connect/store.js");
+const { connectDB, connectRedic, redis } = require("./connect/store");
 
 const app = new Koa();
 Promise.all([connectDB(), connectRedic()]);

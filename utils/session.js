@@ -1,5 +1,5 @@
 const session = require("koa-session");
-const { redis } = require("../connect/store.js");
+const { redis } = require("../connect/store");
 
 const prefix = "user";
 
