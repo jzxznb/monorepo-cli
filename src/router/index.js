@@ -17,6 +17,9 @@ Object.keys(modules).forEach(key => {
                 delete data.router;
                 window.apps.push({ ...data, path });
             }
+            if (route.redirect) {
+                route.redirect = `/${appname}${route.redirect}`;
+            }
             return { ...route, path };
         });
         routes.push(...moduleRoutes);
