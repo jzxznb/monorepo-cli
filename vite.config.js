@@ -2,13 +2,14 @@ import { fileURLToPath, URL } from "node:url";
 import path from "node:path";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+import { createHash } from "node:crypto";
 
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [vue()],
     // root: path.resolve(__dirname, "./src"),
     build: {
-        outDir: path.resolve(__dirname, "./bundle"),
+        outDir: path.resolve(__dirname, "./dist"),
         rollupOptions: {
             input: { 1: path.resolve(__dirname, "./index.html") },
             output: {
@@ -16,7 +17,10 @@ export default defineConfig({
                 chunkFileNames: `[name].[hash].js`,
                 assetFileNames: `[name].[hash].[ext]`,
                 manualChunks: id =>
-                    id.includes("node_modules") && id.toString().split("node_modules/")[1].split("/")[0].toString(),
+                    id.includes("node_modules") &&
+                    createHash("md5")
+                        .update(id.toString().split("node_modules/")[1].split("/")[0].toString())
+                        .digest("hex"),
             },
         },
     },
