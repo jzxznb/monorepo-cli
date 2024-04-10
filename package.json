@@ -1,24 +1,22 @@
 {
-    "name": "server",
-    "version": "0.1.0",
-    "private": true,
+    "name": "apps-cli",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
     "scripts": {
-        "start": "node bin/www",
-        "dev": "./node_modules/.bin/nodemon bin/www",
-        "prd": "pm2 start bin/www",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "npx tsx app.ts"
     },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
     "dependencies": {
-        "koa": "^2.7.0",
         "koa-body": "^6.0.1",
-        "koa-json": "^2.0.2",
-        "koa-router": "^7.4.0",
-        "koa-session": "^6.4.0",
-        "mongoose": "^8.1.1",
-        "pug": "^2.0.3",
-        "redis": "^4.6.12"
+        "pigger": "^1.7.0"
     },
     "devDependencies": {
-        "nodemon": "^1.19.1"
+        "tsx": "^4.7.2",
+        "typescript": "^5.4.4"
     }
 }
