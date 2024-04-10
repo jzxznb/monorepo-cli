@@ -1,9 +1,13 @@
 import { Control, Get } from "pigger/core";
+import UserService from "./service";
 
 @Control("/user")
 export default class {
+    service: UserService;
+
     @Get("/print")
     print(ctx) {
-        ctx.body = "hello /user/print";
+        const userName = this.service.getUser();
+        ctx.body = `hello /user/print ${userName}`;
     }
 }
