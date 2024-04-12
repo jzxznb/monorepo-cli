@@ -6,16 +6,24 @@
     "type": "module",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "npx tsx app.ts"
+        "start": "npx tsx ./src/app.ts",
+        "dev": "nodemon -e ts --exec npm start"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
         "koa-body": "^6.0.1",
-        "pigger": "^1.7.0"
+        "koa-session": "^6.4.0",
+        "mongoose": "^8.3.1",
+        "pigger": "^1.7.0",
+        "redis": "^4.6.13"
     },
     "devDependencies": {
+        "@types/koa": "^2.15.0",
+        "@types/koa-session": "^6.4.5",
+        "@types/mongoose": "^5.11.97",
+        "nodemon": "^3.1.0",
         "tsx": "^4.7.2",
         "typescript": "^5.4.4"
     }
