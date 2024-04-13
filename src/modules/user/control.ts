@@ -1,5 +1,6 @@
-import { Control, Get } from "pigger/core";
+import { Control, Get, Post } from "pigger/core";
 import UserService from "./service";
+import { Context } from "koa";
 
 @Control("/user")
 export default class {
@@ -9,5 +10,10 @@ export default class {
     print(ctx) {
         const userName = this.service.getUser();
         ctx.body = `hello /user/print ${userName}`;
+    }
+
+    @Post("/login")
+    user(ctx: Context) {
+        ctx.session = { username: "username", password: "password", logged: true } as any;
     }
 }

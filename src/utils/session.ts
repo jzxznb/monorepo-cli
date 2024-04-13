@@ -33,8 +33,19 @@ export { default as session } from "koa-session";
 
 export async function verifySession(ctx: Context, next: Next) {
     try {
+        const { url } = ctx.request;
+        const requestUrl = url.split("?")[0];
+        const skipList = ["/user/login"];
+        if (skipList.includes(requestUrl) || ctx.session?.logged) {
+            await next();
+            return;
+        }
+        ctx.response.body = {
+            code: "error",
+            msg: "用户信息错误, 请重新登陆。",
+            type: "verify",
+        };
     } catch (error) {
-        console.log(error);
         ctx.response.body = {
             code: "error",
             msg: "请重新登录用户信息",
