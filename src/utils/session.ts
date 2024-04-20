@@ -15,7 +15,7 @@ export class SessionStore {
         await this.redis.set(id, session, { EX: maxAge / 1000 });
         return id;
     }
-    async _destroy() {}
+    async destroy() {}
 }
 
 export const CONFIG = {
